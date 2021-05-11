@@ -1,0 +1,63 @@
+.top-song-card {
+  height: 100px;
+  //   width: 100%;
+  //   width: 380px;
+  width: 30%;
+  //   display: inline-block;
+  border-top: 1px solid #f2f2f2;
+  //   margin: -1px 30px 13px 0;
+  padding-top: 12px;
+  font-size: 14px;
+
+  .top-song-card-cover {
+    position: relative;
+    float: left;
+    width: 86px;
+    height: 86px;
+    margin-right: 14px;
+    overflow: hidden;
+    .songlist-pic {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .top-song-card-content {
+    height: 86px;
+    .song-title {
+      font-size: 14px;
+      padding: 21px 0 2px;
+      max-width: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 400;
+
+      .song-title-container {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+
+    .song-author {
+      max-width: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #999;
+
+      .singer-name {
+        color: #999;
+      }
+    }
+  }
+
+  .top-song-card-time {
+    position: relative;
+    right: 0;
+    top: -100%;
+    float: right;
+    line-height: 100px;
+    color: #999;
+  }
+}

@@ -1,0 +1,49 @@
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.imusic-main {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+  .imusic-layout {
+    height: 100%;
+    width: 100%;
+    .imusic-main-container {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      .imusic-sider {
+        width: 300px;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+      }
+      .imusic-header {
+        padding: 0;
+        display: flex;
+        background-color: #fff !important;
+      }
+
+      .imusic-content {
+        overflow: initial;
+        flex: 1;
+        display: block;
+      }
+    }
+  }
+}
+.imusic-footer {
+  z-index: 1;
+  height: 60px;
+  width: 100%;
+  display: block;
+  position: relative;
+}

@@ -1,0 +1,74 @@
+.mod-section {
+  position: relative;
+  margin: 10px 0;
+  .section-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    .section-title {
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
+      margin-left: 30px;
+    }
+    .section-carousel {
+      padding: 0 30px;
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      position: relative;
+      .carousel-content {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  &:hover,
+  .slide-action-btn {
+    opacity: 1;
+    visibility: none;
+    transform: translateX(0);
+    transition-property: opacity, transform, background, width;
+    transition-duration: 0.5s;
+  }
+}
+.section-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .slide-action-left {
+    left: 0;
+    background: white;
+  }
+  .slide-action-right {
+    right: 0;
+    background: white;
+  }
+}
+
+.slide-action-arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 20px;
+  height: 39px;
+}
+
+.slide-action {
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 100%;
+}
+
+.slide-action-btn:hover {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#19000000', endColorstr='#19000000');
+  background: url(#);
+  background: rgba(0, 0, 0, 0.1);
+}

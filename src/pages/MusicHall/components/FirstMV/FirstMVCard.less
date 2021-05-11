@@ -1,0 +1,66 @@
+.fristmv-card {
+  position: relative;
+  //   margin-right: 20px;
+  width: 224px;
+  height: 211px;
+
+  .fristmv-card-cover {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    height: 110px;
+    margin-bottom: 15px;
+    .fristmv-pic {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .fristmv-card-title {
+    font-weight: 400;
+    zoom: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .js-fristmv {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+
+  .fristmv-card-singer {
+    &a {
+      color: #999;
+    }
+  }
+
+  .fristmv-card-info {
+    .fristmv-listen {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+
+      .fristmv-listen-icon {
+        display: inline-block;
+        width: 19px;
+        height: 18px;
+        background-position: -180px -20px;
+        margin-right: 5px;
+        vertical-align: -1px;
+      }
+    }
+  }
+
+  .fristmv-card-singer,
+  .fristmv-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .fristmv-card-singer,
+  .fristmv-card-info {
+    color: #999;
+  }
+}

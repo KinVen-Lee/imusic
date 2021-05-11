@@ -1,0 +1,81 @@
+.toplist-card {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+
+  .toplist-card-bg {
+    background-position: 0 0;
+  }
+
+  .mod-cover-icon-play {
+    background-size: 72%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+
+  .toplist-card-line {
+    position: absolute;
+    left: 50%;
+    top: 148px;
+    margin-left: -18px;
+    width: 36px;
+    height: 2px;
+    background: #fff;
+  }
+
+  .toplist-title {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    text-align: center;
+
+    .toplist-title-content {
+      height: 36px;
+      line-height: 1;
+      font-size: 26px;
+      color: #fff;
+      font-weight: 400;
+    }
+  }
+
+  .toplist-card-songlist {
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    top: 188px;
+    left: 30px;
+    right: 30px;
+    white-space: nowrap;
+
+    .toplist-song {
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 27px;
+
+      .toplist-number {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .toplist-songname {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 5px;
+      }
+
+      .toplist-artist {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.toplist-card-songlist,
+.toplist-card-songlist a {
+  color: #fff;
+  font-size: 14px;
+}
