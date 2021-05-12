@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-13 18:49:48
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-11 16:15:22
+ * @LastEditTime: 2021-05-13 02:55:56
  * @Description:
  * @Version: 1.0
  */
@@ -13,12 +13,15 @@ import React from "react";
 import SectionMod from "../SectionMod";
 import { SongList } from "./interface";
 import { getPersonalizedSongList } from "../../../../../netWork/request";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import SongListDetail from "@/pages/MusicHall/SongListDetail";
 
 /**
  * 推荐歌单
  */
 const SongListArea = () => {
   const [songlist, setSongList] = useState<Array<SongList>>([]);
+  let { path, url } = useRouteMatch();
   useEffect(() => {
     getPersonalizedSongList().then((res) => {
       setSongList(res.result);
@@ -39,23 +42,32 @@ const SongListArea = () => {
           return (
             <div className="songlist-warpper" key={items}>
               {items.map((songlistItem: SongList) => (
-                <div className="songlist-card" key={songlistItem.id}>
-                  <div className="songlist-card-cover">
-                    <img
-                      src={songlistItem.picUrl}
-                      alt={songlistItem.copywriter}
-                      className="songlist-pic"
-                    />
-                  </div>
-                  <h4 className="songlist-title">
-                    <span className="songlist-title-txt">
-                      {songlistItem.name}
-                    </span>
-                  </h4>
-                  <div className="songlist-palycount">
-                    播放量：{songlistItem.playCount}
-                  </div>
-                </div>
+                <>
+                  <Link to={`${url}/${songlistItem.id}`}>
+                    <div className="songlist-card" key={songlistItem.id}>
+                      <div className="songlist-card-cover">
+                        <img
+                          src={songlistItem.picUrl}
+                          alt={songlistItem.copywriter}
+                          className="songlist-pic"
+                        />
+                      </div>
+                      <h4 className="songlist-title">
+                        <span className="songlist-title-txt">
+                          {songlistItem.name}
+                        </span>
+                      </h4>
+                      <div className="songlist-palycount">
+                        播放量：{songlistItem.playCount}
+                      </div>
+                    </div>
+                  </Link>
+                  <Switch>
+                    <Route path={`${path}/:id`}>
+                      <SongListDetail />
+                    </Route>
+                  </Switch>
+                </>
               ))}
             </div>
             // </div>

@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-21 21:35:51
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-10 19:19:43
+ * @LastEditTime: 2021-05-13 02:29:13
  * @Description:
  * @Version: 1.0
  */
@@ -16,6 +16,7 @@ import ClassifiedSongList from "./ClassifiedSongList";
 import Rank from "./Rank";
 import Singer from "./Singer";
 import Recommend from "./Recommend";
+import SongListDetail from "./SongListDetail";
 const MusicHall = () => {
   const NavBarData: NavBarData[] = [
     {
@@ -54,7 +55,8 @@ const MusicHall = () => {
       <Route exact path="/" component={Recommend} />
       <Route path="/rank" component={Rank} />
       <Route path="/singer" component={Singer} />
-      <Route path="/ClassifiedSongList" component={ClassifiedSongList} />
+      <Route path="/classifiedSongList" component={ClassifiedSongList} />
+      {/* <Route path="/songlist/detail/:id" component={SongListDetail} /> */}
     </>
   );
 };

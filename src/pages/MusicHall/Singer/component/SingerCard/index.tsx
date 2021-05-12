@@ -28,10 +28,6 @@ const SingerCard = (props: SingerCardProps) => {
         <img src={data.picUrl} />
       </div>
       <div className="singer-name">{data.name}</div>
-
-      {/* <Card>
-        <Card.Meta avatar={<Avatar src={data.picUrl} />} title={data.name} />
-      </Card> */}
     </div>
   );
 };

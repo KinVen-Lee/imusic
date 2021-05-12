@@ -1,0 +1,46 @@
+.classifiedSongList {
+  margin: 0 40px;
+  .classifiedSongList-target {
+    display: flex;
+    margin-top: 30px;
+    .classifiedSongList-targetItem {
+    }
+  }
+  .classifiedSongList-list {
+    // margin: 0 40px;
+    margin-top: 30px;
+    position: relative;
+    .classifiedSongList-list-title {
+      display: flex;
+      &.left-title {
+        font-size: 20px;
+        height: 40px;
+        line-height: 40px;
+      }
+      &.right-title {
+        position: absolute;
+        right: 0px;
+        height: 40px;
+        line-height: 40px;
+        & > div {
+          // margin-left: 20px;
+          width: 40px;
+          text-align: center;
+          cursor: pointer;
+          color: #000;
+          &.active {
+            color: green;
+          }
+        }
+      }
+    }
+    .classifiedSongList-list-content {
+      margin-top: 20px;
+    }
+  }
+}
+// .songlist-card {
+//   height: 100px;
+//   width: 100px;
+//   background-color: aqua;
+// }
