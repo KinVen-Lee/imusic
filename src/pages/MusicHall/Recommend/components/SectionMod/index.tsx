@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-21 21:35:51
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 15:52:06
+ * @LastEditTime: 2021-05-13 22:25:56
  * @Description:
  * @Version: 1.0
  */
@@ -40,17 +40,14 @@ const SectionMod = (props: SectionModProps) => {
   };
   return (
     <div className={`mod-section ${className ?? ""}`} style={style}>
-      <div className="section-content" onClick={() => console.log(1232322)}>
+      <div className="section-content">
         {title && <div className="section-title">{title}</div>}
         <div
           className="section-carousel"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div
-            className="carousel-content"
-            onClick={() => console.log(1232322)}
-          >
+          <div className="carousel-content">
             <Carousel ref={carouselRef}>{props.children}</Carousel>
           </div>
           {

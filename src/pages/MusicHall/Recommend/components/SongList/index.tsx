@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-13 18:49:48
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 17:52:34
+ * @LastEditTime: 2021-05-14 00:32:46
  * @Description:
  * @Version: 1.0
  */
@@ -13,7 +13,7 @@ import React from "react";
 import SectionMod from "../SectionMod";
 import { SongList } from "./interface";
 import { getPersonalizedSongList } from "../../../../../netWork/request";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import SongListDetail from "@/pages/MusicHall/SongListDetail";
 
 /**
@@ -21,12 +21,12 @@ import SongListDetail from "@/pages/MusicHall/SongListDetail";
  */
 const SongListArea = () => {
   const [songlist, setSongList] = useState<Array<SongList>>([]);
-  let { path, url } = useRouteMatch();
+  // const { path, url } = useRouteMatch();
   useEffect(() => {
     getPersonalizedSongList().then((res) => {
       setSongList(res.result);
     });
-    console.log(path, url);
+    // console.log(path, url);
   }, []);
   return (
     <SectionMod
@@ -46,16 +46,8 @@ const SongListArea = () => {
                 <Link
                   to={`/songlist/detail/${songlistItem.id}`}
                   key={songlistItem.id}
-                  onClick={() => {
-                    console.log(`/songlist/detail/${songlistItem.id}`);
-                  }}
                 >
-                  <div
-                    className="songlist-card"
-                    onClick={() => {
-                      console.log(11);
-                    }}
-                  >
+                  <div className="songlist-card">
                     <div className="songlist-card-cover">
                       <img
                         src={songlistItem.picUrl}
@@ -74,11 +66,6 @@ const SongListArea = () => {
                   </div>
                 </Link>
               ))}
-              <Switch>
-                <Route path={`${path}/:id`}>
-                  <SongListDetail />
-                </Route>
-              </Switch>
             </div>
             // </div>
           );

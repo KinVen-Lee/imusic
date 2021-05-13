@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-05-13 02:19:13
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-14 01:26:24
+ * @LastEditTime: 2021-05-14 01:14:02
  * @Description:
  * @Version: 1.0
  */
@@ -15,14 +15,14 @@ import { useParams } from "react-router-dom";
 import "./index.less";
 import { Ar, PlayListDetailResult, Track } from "./utils/interface";
 
-const SongListDetail = () => {
-  const { id } = useParams();
+const RankDetail = () => {
   const [data, setData] = useState<any>(null);
+  const { id } = useParams();
   useEffect(() => {
-    console.log(id);
     getPlayListDetail(id).then((res: PlayListDetailResult) => {
       console.log(res);
       setData(res);
+      console.log(res.playlist.updateTime.toLocaleString());
     });
     return () => {};
   }, []);
@@ -109,4 +109,4 @@ const SongListDetail = () => {
   );
 };
 
-export default SongListDetail;
+export default RankDetail;

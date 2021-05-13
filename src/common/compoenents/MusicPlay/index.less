@@ -1,0 +1,78 @@
+.music-play-control-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  .song-info {
+    flex: 1;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    .song-pic {
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+      background-color: blue;
+    }
+    .song-title {
+      flex: 1;
+      height: 40px;
+      margin-left: 10px;
+      .song-name {
+        font-size: 12px;
+      }
+      .song-control {
+        display: flex;
+        margin-top: 5px;
+        .song-love {
+          height: 16px;
+          width: 16px;
+          background-image: url("@assets/svg/xihuan.svg");
+          background-repeat: no-repeat;
+          background-size: 16px 16px;
+        }
+      }
+    }
+  }
+  .song-play-control {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & > div {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      background-repeat: no-repeat;
+      background-size: 30px 30px;
+    }
+    .btn_prev {
+      background-image: url("@assets/svg/shangyishou.svg");
+    }
+    .btn_play {
+      background-image: url("@assets/svg/zanting.svg");
+    }
+
+    .btn_next {
+      background-image: url("@assets/svg/xiayishou.svg");
+    }
+    .btn_suijibofang {
+      width: 20px;
+      height: 20px;
+      background-image: url("@assets/svg/suijibofang.svg");
+      background-size: 20px 20px;
+    }
+    .btn_yinliang {
+      width: 20px;
+      height: 20px;
+      background-image: url("@assets/svg/yinliang.svg");
+      background-size: 20px 20px;
+    }
+  }
+  .song-other-control {
+    flex: 1;
+    height: 100%;
+  }
+}

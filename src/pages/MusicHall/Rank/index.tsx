@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-05-10 19:08:37
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-12 04:03:45
+ * @LastEditTime: 2021-05-13 21:05:42
  * @Description:
  * @Version: 1.0
  */
@@ -11,6 +11,7 @@ import "./index.less";
 import React, { createContext, useEffect, useState } from "react";
 import { Song, TopListItem, TopListResult, Track } from "./utils/interface";
 import { getTopListDetail } from "@/netWork/request";
+import { Link } from "react-router-dom";
 
 const Rank = () => {
   const [toplist, setTopList] = useState<TopListItem[]>([]);
@@ -37,7 +38,11 @@ const Rank = () => {
             {characteristic.length > 0 &&
               characteristic.map((item: TopListItem) => {
                 return (
-                  <div className="characteristic-toplist-item" key={item.id}>
+                  <Link
+                    to={`/rank/detail/${item.id}`}
+                    className="characteristic-toplist-item"
+                    key={item.id}
+                  >
                     <div className="toplist-item-cover">
                       <img src={item.coverImgUrl} alt="" />
                     </div>
@@ -56,7 +61,7 @@ const Rank = () => {
                           })}
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
           </div>
@@ -67,11 +72,17 @@ const Rank = () => {
             {media.length > 0 &&
               media.map((item: TopListItem) => {
                 return (
-                  <div className="media-toplist-item" key={item.id}>
-                    <div className="media-toplist-item-cover">
-                      <img src={item.coverImgUrl} alt="" />
+                  <Link
+                    to={`/rank/detail/${item.id}`}
+                    className="media-toplist-item"
+                    key={item.id}
+                  >
+                    <div className="media-toplist-item" key={item.id}>
+                      <div className="media-toplist-item-cover">
+                        <img src={item.coverImgUrl} alt="" />
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
           </div>

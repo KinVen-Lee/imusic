@@ -2,16 +2,15 @@
  * @Author: KinVen
  * @Date: 2021-04-21 21:35:51
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 14:44:48
+ * @LastEditTime: 2021-05-14 00:52:53
  * @Description:
  * @Version: 1.0
  */
 import React from "react";
 import { NavBarData } from "./interface";
-// import { Outlet, useParams } from "react-router";
 import NavBar from "./components/NavBar";
 import { Menu } from "antd";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import ClassifiedSongList from "./ClassifiedSongList";
 import Rank from "./Rank";
 import Singer from "./Singer";
@@ -52,10 +51,12 @@ const MusicHall = () => {
             </Menu.Item>
           ))}
       </Menu>
-      <Route exact path="/" component={Recommend} />
-      <Route path="/rank" component={Rank} />
-      <Route path="/singer" component={Singer} />
-      <Route path="/classifiedSongList" component={ClassifiedSongList} />
+      <Routes>
+        <Route path="/" element={<Recommend />} />
+        <Route path="/rank" element={<Rank />} />
+        <Route path="/singer" element={<Singer />} />
+        <Route path="/classifiedSongList" element={<ClassifiedSongList />} />
+      </Routes>
     </>
   );
 };

@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-05-12 00:45:30
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-12 01:49:50
+ * @LastEditTime: 2021-05-14 00:32:56
  * @Description:
  * @Version: 1.0
  */
@@ -14,6 +14,8 @@ import { getArtistList } from "@/netWork/request";
 import { Artist, SingerResult } from "../../utils/interface";
 import SingerCard from "../SingerCard";
 import { Button } from "antd";
+import { Link, Route } from "react-router-dom";
+import SongListDetail from "@/pages/MusicHall/SongListDetail";
 
 const SingerList = () => {
   const [offset, setOffset] = useState<number>(0);
@@ -21,6 +23,7 @@ const SingerList = () => {
   const [artistList, setArtistList] = useState<Array<Artist>>([]);
   const { state, dispatch } = useContext(SingerContext);
   const { type, area, initial } = state;
+  // const { path, url } = useRouteMatch();
   useEffect(() => {
     getArtistList({ type, area, offset: "0", initial }).then(
       (res: SingerResult) => {
@@ -48,7 +51,9 @@ const SingerList = () => {
     <>
       <div className="singerlist">
         {artistList.map((artist: Artist, index: number) => (
-          <SingerCard key={index} data={artist} />
+          <Link to={`/singer/detail/${artist.id}`} key={index}>
+            <SingerCard data={artist} />
+          </Link>
         ))}
       </div>
       {hasMore && (

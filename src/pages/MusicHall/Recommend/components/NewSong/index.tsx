@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-21 21:35:51
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-11 16:30:46
+ * @LastEditTime: 2021-05-13 23:04:17
  * @Description:
  * @Version: 1.0
  */
@@ -13,7 +13,7 @@ import _ from "lodash";
 import React from "react";
 import SectionMod from "../SectionMod";
 import { Artist, NewSong, NewSongResult } from "./interface";
-import { getPersonalizedNewSong } from "@/netWork/request";
+import { getPersonalizedNewSong, getSongUrl } from "@/netWork/request";
 /**
  * 推荐新音乐
  */
@@ -46,7 +46,16 @@ const NewSongArea = () => {
           return (
             <div className="newsong-wrapper" key={index}>
               {items.map((songlistItem: NewSong) => (
-                <div className="newsong-card" key={songlistItem.id}>
+                <div
+                  className="newsong-card"
+                  key={songlistItem.id}
+                  onClick={() => {
+                    getSongUrl(songlistItem.id.toString()).then((res) => {
+                      console.log(res);
+                    });
+                    console.log(songlistItem.id);
+                  }}
+                >
                   <div className="newsong-card-cover">
                     <img
                       src={songlistItem.picUrl}

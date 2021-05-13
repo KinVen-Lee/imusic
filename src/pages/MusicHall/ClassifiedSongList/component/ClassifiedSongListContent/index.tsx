@@ -2,13 +2,14 @@
  * @Author: KinVen
  * @Date: 2021-05-12 00:45:30
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 01:55:58
+ * @LastEditTime: 2021-05-13 19:57:59
  * @Description:
  * @Version: 1.0
  */
 
 import { getTopPlayList } from "@/netWork/request";
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ClassifiedSongListContext } from "../../context.config";
 import { Playlist, TopListResult } from "../../utils/interface";
 import "./index.less";
@@ -39,21 +40,23 @@ const ClassifiedSongListContent = (props: ClassifiedSongListContentProps) => {
       <>
         {playlists.map((playlist: Playlist) => {
           return (
-            <div className="songlist-card" key={playlist.id}>
-              <div className="songlist-card-cover">
-                <img
-                  src={playlist.coverImgUrl}
-                  alt=""
-                  className="songlist-pic"
-                />
+            <Link to={`/songlist/detail/${playlist.id}`} key={playlist.id}>
+              <div className="songlist-card">
+                <div className="songlist-card-cover">
+                  <img
+                    src={playlist.coverImgUrl}
+                    alt=""
+                    className="songlist-pic"
+                  />
+                </div>
+                <h4 className="songlist-title">
+                  <span className="songlist-title-des">
+                    {playlist.description}
+                  </span>
+                  <span className="songlist-title-txt">{playlist.name}</span>
+                </h4>
               </div>
-              <h4 className="songlist-title">
-                <span className="songlist-title-des">
-                  {playlist.description}
-                </span>
-                <span className="songlist-title-txt">{playlist.name}</span>
-              </h4>
-            </div>
+            </Link>
           );
         })}
       </>

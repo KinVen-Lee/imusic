@@ -775,19 +775,17 @@ export async function getPlayListDetail(id: string, s = 8) {
 
 /**
  * 获取音乐 url
-说明 : 使用歌单详情接口后 , 能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口, 传入的音乐 id( 可多个 , 用逗号隔开 ), 可以获取对应的音乐的 url,未登录状态返回试听片段(返回字段包含被截取的正常歌曲的开始时间和结束时间)
-
-注 : 部分用户反馈获取的 url 会 403,hwaphon找到的解决方案是当获取到音乐的 id 后，将 https://music.163.com/song/media/outer/url?id=id.mp3 以 src 赋予 Audio 即可播放
-
-必选参数 : id : 音乐 id
-
-可选参数 : br: 码率,默认设置了 999000 即最大码率,如果要 320k 则可设置为 320000,其他类推
-
-接口地址 : /song/url
-
-调用例子 : /song/url?id=33894312 /song/url?id=405998841,33894312
+ * 说明 : 使用歌单详情接口后 , 能得到的音乐的 id, 但不能得到的音乐 url, 调用此接口, 传入的音乐 id( 可多个 , 用逗号隔开 ), 可以获取对应的音乐的 url,未登录状态返回试听片段(返回字段包含被截取的正常歌曲的开始时间和结束时间)
+ * 注 : 部分用户反馈获取的 url 会 403,hwaphon找到的解决方案是当获取到音乐的 id 后，将 https://music.163.com/song/media/outer/url?id=id.mp3 以 src 赋予 Audio 即可播放
+ * 必选参数 : id : 音乐 id
+ * 可选参数 : br: 码率,默认设置了 999000 即最大码率,如果要 320k 则可设置为 320000,其他类推
+ * 接口地址 : /song/url
+ * 调用例子 : /song/url?id=33894312 /song/url?id=405998841,33894312
  */
-
+export async function getSongUrl(id: string) {
+  const result = await get("/api/song/url", { id });
+  return result;
+}
 /**
  * 音乐是否可用
 说明: 调用此接口,传入歌曲 id, 可获取音乐是否可用,返回 { success: true, message: 'ok' } 或者 { success: false, message: '亲爱的,暂无版权' }
@@ -1456,7 +1454,6 @@ t : 1 为收藏,其他为取消收藏
 /**
  * 获取已收藏专辑列表
 说明 : 调用此接口 , 可获得已收藏专辑列表
-
 可选参数 :
 limit: 取出数量 , 默认为 25
 
@@ -1469,76 +1466,74 @@ offset: 偏移数量 , 用于分页 , 如 :( 页数 -1)*25, 其中 25 为 limit 
 
 /**
  * 获取歌手单曲
-说明 : 调用此接口 , 传入歌手 id, 可获得歌手部分信息和热门歌曲
-
-必选参数 : id: 歌手 id, 可由搜索接口获得
-
-接口地址 : /artists
-
-调用例子 : /artists?id=6452
+ * 说明 : 调用此接口 , 传入歌手 id, 可获得歌手部分信息和热门歌曲
+ * 必选参数 : id: 歌手 id, 可由搜索接口获得
+ * 接口地址 : /artists
+ * 调用例子 : /artists?id=6452
  */
-
+export async function getSingerSong(id: string) {
+  const result = await get("/api/artists", { id });
+  return result;
+}
 /**
  * 获取歌手 mv
-说明 : 调用此接口 , 传入歌手 id, 可获得歌手 mv 信息 , 具体 mv 播放地址可调 用/mv传入此接口获得的 mvid 来拿到 , 如 : /artist/mv?id=6452,/mv?mvid=5461064
-
-必选参数 : id: 歌手 id, 可由搜索接口获得
-
-接口地址 : /artist/mv
-
-调用例子 : /artist/mv?id=6452
-
+ * 说明 : 调用此接口 , 传入歌手 id, 可获得歌手 mv 信息 , 具体 mv 播放地址可调 用/mv传入此接口获得的 mvid 来拿到 , 如 : /artist/mv?id=6452,/mv?mvid=5461064
+ * 必选参数 : id: 歌手 id, 可由搜索接口获得
+ * 接口地址 : /artist/mv
+ * 调用例子 : /artist/mv?id=6452
  */
+export async function getSingerMV(id: string) {
+  const result = await get("/api/artist/mv", { id });
+  return result;
+}
 /**
  * 获取歌手专辑
-说明 : 调用此接口 , 传入歌手 id, 可获得歌手专辑内容
-
-必选参数 : id: 歌手 id
-
-可选参数 : limit: 取出数量 , 默认为 50
-
-offset: 偏移数量 , 用于分页 , 如 :( 页数 -1)*50, 其中 50 为 limit 的值 , 默认 为 0
-
-接口地址 : /artist/album
-
-调用例子 : /artist/album?id=6452&limit=30 ( 周杰伦 )
-
-返回数据如下图 : 获取专辑内容
+ * 说明 : 调用此接口 , 传入歌手 id, 可获得歌手专辑内容
+ * 必选参数 : id: 歌手 id
+ * 可选参数 : limit: 取出数量 , 默认为 50
+ * offset: 偏移数量 , 用于分页 , 如 :( 页数 -1)*50, 其中 50 为 limit 的值 , 默认 为 0
+ * 接口地址 : /artist/album
+ * 调用例子 : /artist/album?id=6452&limit=30 ( 周杰伦 )
+ * 返回数据如下图 : 获取专辑内容
  */
-
+export async function getSingerAlbum(id: string) {
+  const result = await get("/api/artist/album", { id });
+  return result;
+}
 /**
  * 获取歌手描述
-说明 : 调用此接口 , 传入歌手 id, 可获得歌手描述
-
-必选参数 : id: 歌手 id
-
-接口地址 : /artist/desc
-
-调用例子 : /artist/desc?id=6452 ( 周杰伦 )
+ * 说明 : 调用此接口 , 传入歌手 id, 可获得歌手描述
+ * 必选参数 : id: 歌手 id
+ * 接口地址 : /artist/desc
+ * 调用例子 : /artist/desc?id=6452 ( 周杰伦 )
  */
-
+export async function getSingerDesc(id: string) {
+  const result = await get("/api/artist/desc", { id });
+  return result;
+}
 /**
  * 获取歌手详情
-说明 : 调用此接口 , 传入歌手 id, 可获得获取歌手详情
-
-必选参数 : id: 歌手 id
-
-接口地址 : /artist/detail
-
-调用例子 : /artist/detail?id=11972054 (Billie Eilish)
+ * 说明 : 调用此接口 , 传入歌手 id, 可获得获取歌手详情
+ * 必选参数 : id: 歌手 id
+ * 接口地址 : /artist/detail
+ * 调用例子 : /artist/detail?id=11972054 (Billie Eilish)
  */
-
+export async function getSingerDetail(id: string) {
+  const result = await get("/api/artist/detail", { id });
+  return result;
+}
 /**
  * 获取相似歌手
-说明 : 调用此接口 , 传入歌手 id, 可获得相似歌手
-
-必选参数 : id: 歌手 id
-
-接口地址 : /simi/artist
-
-调用例子 : /simi/artist?id=6452 ( 对应和周杰伦相似歌手 )
-
+ * 说明 : 调用此接口 , 传入歌手 id, 可获得相似歌手
+ * 必选参数 : id: 歌手 id
+ * 接口地址 : /simi/artist
+ * 调用例子 : /simi/artist?id=6452 ( 对应和周杰伦相似歌手 )
  */
+export async function getSimilarSinger(id: string) {
+  const result = await get("/api/simi/artist", { id });
+  return result;
+}
+
 /**
  * 获取相似歌单
 说明 : 调用此接口 , 传入歌曲 id, 可获得相似歌单

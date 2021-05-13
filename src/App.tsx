@@ -2,28 +2,22 @@
  * @Author: KinVen
  * @Date: 2021-04-13 18:45:16
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 19:07:13
+ * @LastEditTime: 2021-05-14 01:26:50
  * @Description:
  * @Version: 1.0
  */
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
+import MusicHall from "@pages/MusicHall";
 import { Layout, Menu } from "antd";
 import React from "react";
-import { HashRouter as Router, Link, Route } from "react-router-dom";
+import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 import "./App.less";
-
-import MusicHall from "@pages/MusicHall";
 import Header from "./common/compoenents/Header";
+import MusicPlay from "./common/compoenents/MusicPlay";
+import RankDetail from "./pages/MusicHall/RankDetail";
+import SingerDetail from "./pages/MusicHall/SingerDetail";
 import SongListDetail from "./pages/MusicHall/SongListDetail";
+
 const { Content, Footer, Sider } = Layout;
 
 const App = () => {
@@ -69,12 +63,36 @@ const App = () => {
               <Header></Header>
             </Layout.Header>
             <Content className="imusic-content" style={{ overflow: "auto" }}>
-              <Route path="/" component={MusicHall} />
+              <Routes>
+                <Route path="/*" element={<MusicHall />} />
+                <Route
+                  path="/songlist/detail/:id"
+                  element={<SongListDetail />}
+                />
+                <Route path="/singer/detail/:id" element={<SingerDetail />} />
+                <Route path="/rank/detail/:id" element={<RankDetail />} />
+              </Routes>
+
+              {/* <Switch>
+                <Route path="/pageOne" render={() => 
+                  <MusicHall>
+                    <Route exact path="/pageOne" component={PageOneChildOne}/>
+                    <Route path="/pageOne/PageOneChildTwo" component={PageOneChildTwo}/>
+                  </MusicHall>
+                }/>
+                <Route path="/pageTwo" render={() => 
+                  <PageTwo>
+                    <Route exact path="/pageTwo" component={PageTwoChildOne}/>
+                    <Route path="/pageTwo/PageOneChildTwo" component={PageTwoChildTwo}/>
+                  </PageTwo>
+                }/>
+                <Redirect exact to="/pageOne" from='/' /> */}
+              {/* <Route path="/" component={MusicHall} /> */}
             </Content>
-            <Route path="/songlist/detail/:id" component={SongListDetail} />
-            {/* <div className="imusic-footer">
+            {/* <Route path="/songlist/detail/:id" component={SongListDetail} /> */}
+            <div className="imusic-footer">
               <MusicPlay />
-            </div> */}
+            </div>
           </Layout>
         </Layout>
       </div>

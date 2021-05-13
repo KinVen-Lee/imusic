@@ -1,89 +1,115 @@
-.toplist {
-  width: 100%;
-  //   padding: 20px 20 0 20px;
-  .characteristic-toplist {
+.singer-detail {
+  // margin: 0 40px;
+  // background-color: aqua;
+  position: relative;
+  .singer-detail-cover {
+    // height: 350px;
     width: 100%;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    .characteristic-toplist-title {
+    overflow: hidden;
+    & > img {
       width: 100%;
-      font-size: 24px;
+      height: 400px;
     }
-    .characteristic-toplist-content {
-      //   height: 200px;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      padding: 20px;
-      justify-content: space-around;
-      .characteristic-toplist-item {
-        flex: 0 0 48%;
-        height: 200px;
-        // width: 50%;
-        background-color: gray;
+
+    // background-color: blue;
+  }
+  & .singer-name {
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+    z-index: 100;
+    margin-left: 20px;
+    position: absolute;
+    bottom: 100px;
+  }
+  .singer-detail-content {
+    margin: 0 50px;
+  }
+}
+.hot-song {
+  .hot-song-header {
+    font-size: 24px;
+  }
+  .hot-song-content {
+    margin-top: 20px;
+  }
+}
+
+.recommend-mv {
+  margin-top: 20px;
+  .recommend-mv-header {
+    font-size: 24px;
+  }
+  .recommend-mv-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    .recomend-mv-card {
+      .recomend-mv-cover {
+        width: 200px;
+        height: 100px;
         border-radius: 10px;
-        margin: 5px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        .toplist-item-cover {
-          width: 200px;
-          background-color: black;
+      }
+      .recomend-mv-name {
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.hot-ablum {
+  .hot-ablum-header {
+    font-size: 24px;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .hot-ablum-content {
+    margin-top: 10px;
+    .hot-albums {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .hot-album-card {
+        .album-cover {
+          height: 165px;
+          width: 165px;
+          display: block;
           border-radius: 10px;
-          & > img {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-          }
-        }
-        .toplist-item-des {
-          margin-left: 20px;
-          .toplist-item-title {
-            margin-top: 20px;
-            font-size: 26px;
-            font-weight: 600;
-          }
-          .toplist-item-songs {
-            margin-top: 10px;
-            .toplist-song-item {
-              margin: 5px 0;
-              //   color: #d9d9d9;
-            }
-          }
         }
       }
     }
   }
-  .media-toplist {
-    width: 100%;
-    height: 100px;
-    // background-color: #001230;
+}
 
-    .media-toplist-title {
-      width: 100%;
-      font-size: 24px;
-      padding: 0 20px;
-      margin-top: 20px;
-    }
-    .media-toplist-content {
+.similar-singer {
+  margin-top: 20px;
+  & .similar-singer-header {
+    font-size: 24px;
+  }
+  & .similar-singer-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .similar-singer-card {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      padding: 20px;
-      justify-content: space-around;
-      .media-toplist-item {
-        flex: 0 0 18%;
-        height: 200px;
-        margin: 20px 5px;
-        .media-toplist-item-cover {
-          border-radius: 10px;
-          & > img {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-          }
-        }
+      flex-direction: column;
+      text-align: center;
+      .similar-singer-pic {
+        display: block;
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+      }
+      .similar-singer-name {
+        margin-top: 10px;
+        font-size: 16px;
       }
     }
   }
