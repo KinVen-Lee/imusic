@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-13 18:45:16
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-11 17:14:24
+ * @LastEditTime: 2021-05-13 19:07:13
  * @Description:
  * @Version: 1.0
  */
@@ -23,6 +23,7 @@ import "./App.less";
 
 import MusicHall from "@pages/MusicHall";
 import Header from "./common/compoenents/Header";
+import SongListDetail from "./pages/MusicHall/SongListDetail";
 const { Content, Footer, Sider } = Layout;
 
 const App = () => {
@@ -70,6 +71,7 @@ const App = () => {
             <Content className="imusic-content" style={{ overflow: "auto" }}>
               <Route path="/" component={MusicHall} />
             </Content>
+            <Route path="/songlist/detail/:id" component={SongListDetail} />
             {/* <div className="imusic-footer">
               <MusicPlay />
             </div> */}

@@ -1,178 +1,248 @@
-export interface TopListResult {
+export interface PlayListDetailResult {
   code: number;
-  list: TopListItem[];
-  artistToplist: ArtistToplist;
-  rewardToplist: RewardToplist;
+  relatedVideos?: any;
+  playlist: Playlist;
+  urls?: any;
+  privileges: Privilege[];
 }
 
-interface RewardToplist {
-  coverUrl: string;
-  songs: Song[];
-  name: string;
-  position: number;
-}
-
-export interface Song {
-  name: string;
+export interface Privilege {
   id: number;
-  position: number;
-  alias: any[];
-  status: number;
   fee: number;
-  copyrightId: number;
-  disc: string;
-  no: number;
-  artists: Artist2[];
-  album: Album;
-  starred: boolean;
-  popularity: number;
-  score: number;
-  starredNum: number;
-  duration: number;
-  playedNum: number;
-  dayPlays: number;
-  hearTime: number;
-  ringtone: string;
-  crbt?: any;
-  audition?: any;
-  copyFrom: string;
-  commentThreadId: string;
-  rtUrl?: any;
-  ftype: number;
-  rtUrls: any[];
-  copyright: number;
-  transName?: any;
-  sign?: any;
-  mark: number;
-  originCoverType: number;
-  originSongSimpleData?: any;
-  single: number;
-  noCopyrightRcmd?: any;
-  rtype: number;
-  rurl?: any;
-  mvid: number;
-  bMusic: BMusic;
-  mp3Url?: any;
-  hMusic: BMusic;
-  mMusic: BMusic;
-  lMusic: BMusic;
+  payed: number;
+  realPayed: number;
+  st: number;
+  pl: number;
+  dl: number;
+  sp: number;
+  cp: number;
+  subp: number;
+  cs: boolean;
+  maxbr: number;
+  fl: number;
+  pc?: any;
+  toast: boolean;
+  flag: number;
+  paidBigBang: boolean;
+  preSell: boolean;
+  playMaxbr: number;
+  downloadMaxbr: number;
+  freeTrialPrivilege: FreeTrialPrivilege;
+  chargeInfoList: ChargeInfoList[];
 }
 
-interface BMusic {
-  name?: any;
+interface ChargeInfoList {
+  rate: number;
+  chargeUrl?: any;
+  chargeMessage?: any;
+  chargeType: number;
+}
+
+interface FreeTrialPrivilege {
+  resConsumable: boolean;
+  userConsumable: boolean;
+}
+
+export interface Playlist {
   id: number;
-  size: number;
-  extension: string;
-  sr: number;
-  dfsId: number;
-  bitrate: number;
-  playTime: number;
-  volumeDelta: number;
-}
-
-interface Album {
   name: string;
-  id: number;
-  type: string;
-  size: number;
-  picId: number;
-  blurPicUrl: string;
-  companyId: number;
-  pic: number;
-  picUrl: string;
-  publishTime: number;
-  description: string;
-  tags: string;
-  company?: string;
-  briefDesc: string;
-  artist: Artist2;
-  songs: any[];
-  alias: any[];
+  coverImgId: number;
+  coverImgUrl: string;
+  coverImgId_str: string;
+  adType: number;
+  userId: number;
+  createTime: number;
   status: number;
-  copyrightId: number;
+  opRecommend: boolean;
+  highQuality: boolean;
+  newImported: boolean;
+  updateTime: number;
+  trackCount: number;
+  specialType: number;
+  privacy: number;
+  trackUpdateTime: number;
   commentThreadId: string;
-  artists: Artist2[];
-  subType: string;
-  transName?: any;
-  onSale: boolean;
-  mark: number;
-  picId_str: string;
-}
-
-interface Artist2 {
-  name: string;
-  id: number;
-  picId: number;
-  img1v1Id: number;
-  briefDesc: string;
-  picUrl: string;
-  img1v1Url: string;
-  albumSize: number;
-  alias: any[];
-  trans: string;
-  musicSize: number;
-  topicPerson: number;
-}
-
-interface ArtistToplist {
-  coverUrl: string;
-  artists: Artist[];
-  name: string;
-  upateFrequency: string;
-  position: number;
-  updateFrequency: string;
-}
-
-interface Artist {
-  first: string;
-  second: string;
-  third: number;
-}
-
-export interface TopListItem {
-  subscribers: any[];
-  subscribed?: any;
-  creator?: any;
-  artists?: any;
-  tracks: Track[];
-  updateFrequency: string;
+  playCount: number;
+  trackNumberUpdateTime: number;
+  subscribedCount: number;
+  cloudTrackCount: number;
+  ordered: boolean;
+  description: string;
+  tags: string[];
+  updateFrequency?: any;
   backgroundCoverId: number;
   backgroundCoverUrl?: any;
   titleImage: number;
   titleImageUrl?: any;
   englishTitle?: any;
-  opRecommend: boolean;
-  recommendInfo?: any;
-  adType: number;
-  trackNumberUpdateTime: number;
-  userId: number;
-  cloudTrackCount: number;
-  subscribedCount: number;
-  createTime: number;
-  highQuality: boolean;
-  updateTime: number;
-  coverImgId: number;
-  newImported: boolean;
-  anonimous: boolean;
-  totalDuration: number;
-  trackCount: number;
-  coverImgUrl: string;
-  specialType: number;
-  commentThreadId: string;
-  trackUpdateTime: number;
-  privacy: number;
-  playCount: number;
-  tags: any[];
-  description: string;
-  ordered: boolean;
-  status: number;
-  name: string;
+  subscribers: Subscriber[];
+  subscribed: boolean;
+  creator: Creator;
+  tracks: Track[];
+  videoIds?: any;
+  videos?: any;
+  trackIds: TrackId[];
+  shareCount: number;
+  commentCount: number;
+  remixVideo?: any;
+}
+
+interface TrackId {
   id: number;
-  coverImgId_str: string;
-  ToplistType: string;
+  v: number;
+  t: number;
+  at: number;
+  alg?: any;
+  rcmdReason: string;
 }
 
 export interface Track {
-  first: string;
-  second: string;
+  name: string;
+  id: number;
+  pst: number;
+  t: number;
+  ar: Ar[];
+  alia: string[];
+  pop: number;
+  st: number;
+  rt: string;
+  fee: number;
+  v: number;
+  crbt?: any;
+  cf: string;
+  al: Al;
+  dt: number;
+  h: H;
+  m: H;
+  l: H;
+  a?: any;
+  cd: string;
+  no: number;
+  rtUrl?: any;
+  ftype: number;
+  rtUrls: any[];
+  djId: number;
+  copyright: number;
+  s_id: number;
+  mark: number;
+  originCoverType: number;
+  originSongSimpleData?: OriginSongSimpleDatum;
+  single: number;
+  noCopyrightRcmd?: any;
+  rtype: number;
+  rurl?: any;
+  mst: number;
+  cp: number;
+  mv: number;
+  publishTime: number;
+  tns?: string[];
+}
+
+interface OriginSongSimpleDatum {
+  songId: number;
+  name: string;
+  artists: Artist[];
+  albumMeta: Artist;
+}
+
+interface Artist {
+  id: number;
+  name: string;
+}
+
+interface H {
+  br: number;
+  fid: number;
+  size: number;
+  vd: number;
+}
+
+interface Al {
+  id: number;
+  name: string;
+  picUrl: string;
+  tns: any[];
+  pic_str?: string;
+  pic: number;
+}
+
+export interface Ar {
+  id: number;
+  name: string;
+  tns: any[];
+  alias: any[];
+}
+
+interface Creator {
+  defaultAvatar: boolean;
+  province: number;
+  authStatus: number;
+  followed: boolean;
+  avatarUrl: string;
+  accountStatus: number;
+  gender: number;
+  city: number;
+  birthday: number;
+  userId: number;
+  userType: number;
+  nickname: string;
+  signature: string;
+  description: string;
+  detailDescription: string;
+  avatarImgId: number;
+  backgroundImgId: number;
+  backgroundUrl: string;
+  authority: number;
+  mutual: boolean;
+  expertTags: string[];
+  experts?: any;
+  djStatus: number;
+  vipType: number;
+  remarkName?: any;
+  authenticationTypes: number;
+  avatarDetail: AvatarDetail;
+  anchor: boolean;
+  avatarImgIdStr: string;
+  backgroundImgIdStr: string;
+  avatarImgId_str: string;
+}
+
+interface AvatarDetail {
+  userType: number;
+  identityLevel: number;
+  identityIconUrl: string;
+}
+
+interface Subscriber {
+  defaultAvatar: boolean;
+  province: number;
+  authStatus: number;
+  followed: boolean;
+  avatarUrl: string;
+  accountStatus: number;
+  gender: number;
+  city: number;
+  birthday: number;
+  userId: number;
+  userType: number;
+  nickname: string;
+  signature: string;
+  description: string;
+  detailDescription: string;
+  avatarImgId: number;
+  backgroundImgId: number;
+  backgroundUrl: string;
+  authority: number;
+  mutual: boolean;
+  expertTags?: any;
+  experts?: any;
+  djStatus: number;
+  vipType: number;
+  remarkName?: any;
+  authenticationTypes: number;
+  avatarDetail?: any;
+  anchor: boolean;
+  avatarImgIdStr: string;
+  backgroundImgIdStr: string;
+  avatarImgId_str?: string;
 }

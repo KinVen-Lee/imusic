@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-21 21:35:51
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 02:29:13
+ * @LastEditTime: 2021-05-13 14:44:48
  * @Description:
  * @Version: 1.0
  */
@@ -56,7 +56,6 @@ const MusicHall = () => {
       <Route path="/rank" component={Rank} />
       <Route path="/singer" component={Singer} />
       <Route path="/classifiedSongList" component={ClassifiedSongList} />
-      {/* <Route path="/songlist/detail/:id" component={SongListDetail} /> */}
     </>
   );
 };
