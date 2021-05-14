@@ -2,23 +2,29 @@
  * @Author: KinVen
  * @Date: 2021-04-21 21:35:51
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 23:04:17
+ * @LastEditTime: 2021-05-14 17:20:22
  * @Description:
  * @Version: 1.0
  */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import "./index.less";
 import _ from "lodash";
 import React from "react";
 import SectionMod from "../SectionMod";
 import { Artist, NewSong, NewSongResult } from "./interface";
-import { getPersonalizedNewSong, getSongUrl } from "@/netWork/request";
+import {
+  getPersonalizedNewSong,
+  getSongLyric,
+  getSongUrl,
+} from "@/netWork/request";
+import { GlobalContext } from "@/globalConfig";
 /**
  * 推荐新音乐
  */
 const NewSongArea = () => {
   const [newSongList, setNewSongList] = useState<Array<NewSong>>([]);
+  const { state, dispatch } = useContext(GlobalContext);
   useEffect(() => {
     getPersonalizedNewSong().then((res: NewSongResult) => {
       setNewSongList(res.result);
@@ -52,6 +58,24 @@ const NewSongArea = () => {
                   onClick={() => {
                     getSongUrl(songlistItem.id.toString()).then((res) => {
                       console.log(res);
+                      console.log(songlistItem);
+                      console.log(123);
+                      getSongLyric(songlistItem.id.toString()).then(
+                        (lyricRes: any) => {
+                          dispatch({
+                            type: "updataPlayMusic",
+                            payload: {
+                              currentMusic: {
+                                url: res?.data[0]?.url,
+                                name: songlistItem.name,
+                                artist: songlistItem?.song?.artists[0].name,
+                                cover: songlistItem.picUrl,
+                                lrc: lyricRes.lrc.lyric,
+                              },
+                            },
+                          });
+                        }
+                      );
                     });
                     console.log(songlistItem.id);
                   }}
@@ -69,7 +93,6 @@ const NewSongArea = () => {
                     </span>
                   </h4>
                   <div className="newsong-singer">
-                    歌手：
                     {getSingers(songlistItem.song.artists)}
                   </div>
                 </div>

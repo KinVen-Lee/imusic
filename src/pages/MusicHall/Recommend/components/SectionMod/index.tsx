@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-04-21 21:35:51
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-13 22:25:56
+ * @LastEditTime: 2021-05-14 17:31:00
  * @Description:
  * @Version: 1.0
  */
@@ -22,56 +22,43 @@ interface SectionModProps {
 
 const SectionMod = (props: SectionModProps) => {
   const { className, title, style } = props;
-  const carouselRef = useRef(null);
-  const [show, setShow] = useState(false);
-  const handleNext = () => {
-    (carouselRef.current as any).next();
-  };
-
-  const handlePre = () => {
-    (carouselRef.current as any).prev();
-  };
-
-  const handleMouseEnter = () => {
-    setShow(true);
-  };
-  const handleMouseLeave = () => {
-    setShow(false);
-  };
+  const render1 = () => (
+    <img
+      src={carouselRight}
+      className="slide-action-arrow slide-action-arrow-left"
+    />
+  );
+  const render2 = () => (
+    <img
+      src={carouselLeft}
+      className="slide-action-arrow slide-action-arrow-right"
+    />
+  );
   return (
     <div className={`mod-section ${className ?? ""}`} style={style}>
       <div className="section-content">
         {title && <div className="section-title">{title}</div>}
-        <div
-          className="section-carousel"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="section-carousel">
           <div className="carousel-content">
-            <Carousel ref={carouselRef}>{props.children}</Carousel>
+            <Carousel
+              arrows={true}
+              prevArrow={render1()}
+              nextArrow={render2()}
+              //   <img
+              //     src={carouselRight}
+              //     className="slide-action-arrow slide-action-arrow-left"
+              //   />
+              // }
+              // nextArrow={
+              //   <img
+              //     src={carouselLeft}
+              //     className="slide-action-arrow slide-action-arrow-right"
+              //   />
+              // }
+            >
+              {props.children}
+            </Carousel>
           </div>
-          {
-            <div className="section-slide">
-              <div
-                className="slide-action slide-action-left"
-                onClick={handlePre}
-              >
-                <img
-                  src={carouselRight}
-                  className="slide-action-arrow slide-action-arrow-left"
-                />
-              </div>
-              <div
-                className="slide-action slide-action-right"
-                onClick={handleNext}
-              >
-                <img
-                  src={carouselLeft}
-                  className="slide-action-arrow slide-action-arrow-right"
-                />
-              </div>
-            </div>
-          }
         </div>
       </div>
     </div>

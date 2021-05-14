@@ -2,7 +2,7 @@
  * @Author: KinVen
  * @Date: 2021-05-10 19:18:54
  * @LastEditors: KinVen
- * @LastEditTime: 2021-05-11 16:33:31
+ * @LastEditTime: 2021-05-14 05:45:47
  * @Description:
  * @Version: 1.0
  */
@@ -22,7 +22,7 @@ const Recommend = () => {
         <SongListArea />
         <NewSongArea />
         <MVArea />
-        <DjprogramArea />
+        {/* <DjprogramArea /> */}
       </div>
     </>
   );

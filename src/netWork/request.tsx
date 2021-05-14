@@ -801,18 +801,29 @@ export async function getSongUrl(id: string) {
 
 /**
  * 搜索
-说明 : 调用此接口 , 传入搜索关键词可以搜索该音乐 / 专辑 / 歌手 / 歌单 / 用户 , 关键词可以多个 , 以空格隔开 , 如 " 周杰伦 搁浅 "( 不需要登录 ), 搜索获取的 mp3url 不能直接用 , 可通过 /song/url 接口传入歌曲 id 获取具体的播放链接
-
-必选参数 : keywords : 关键词
-
-可选参数 : limit : 返回数量 , 默认为 30 offset : 偏移数量，用于分页 , 如 : 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
-
-type: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合
-
-接口地址 : /search 或者 /cloudsearch(更全)
-
-调用例子 : /search?keywords= 海阔天空 /cloudsearch?keywords= 海阔天空
+ * 说明 : 调用此接口 , 传入搜索关键词可以搜索该音乐 / 专辑 / 歌手 / 歌单 / 用户 , 关键词可以多个 , 以空格隔开 , 如 " 周杰伦 搁浅 "( 不需要登录 ), 搜索获取的 mp3url 不能直接用 , 可通过 /song/url 接口传入歌曲 id 获取具体的播放链接
+ * 必选参数 : keywords : 关键词
+ * 可选参数 :
+ *    limit : 返回数量 , 默认为 30
+ *    offset : 偏移数量，用于分页 , 如 : 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
+ *    type: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频, 1018:综合
+ * 接口地址 : /search 或者 /cloudsearch(更全)
+ * 调用例子 : /search?keywords= 海阔天空 /cloudsearch?keywords= 海阔天空
  */
+export async function getSearch(
+  keywords: string,
+  offset: number,
+  limit = 30,
+  type?: string
+) {
+  const result = await get("/api/cloudsearch", {
+    keywords,
+    offset,
+    limit,
+    type,
+  });
+  return result;
+}
 
 /**
  * 默认搜索关键词
@@ -973,14 +984,15 @@ ids : 视频id,支持多个,用,隔开
 
 /**
  * 获取歌词
-说明 : 调用此接口 , 传入音乐 id 可获得对应音乐的歌词 ( 不需要登录 )
-
-必选参数 : id: 音乐 id
-
-接口地址 : /lyric
-
-调用例子 : /lyric?id=33894312
+ * 说明 : 调用此接口 , 传入音乐 id 可获得对应音乐的歌词 ( 不需要登录 )
+ * 必选参数 : id: 音乐 id
+ * 接口地址 : /lyric
+ * 调用例子 : /lyric?id=33894312
  */
+export async function getSongLyric(id: string) {
+  const result = await get("/api/lyric", { id });
+  return result;
+}
 
 /**
  * 新歌速递
